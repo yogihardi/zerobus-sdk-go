@@ -43,20 +43,9 @@ build-rust:
 	LIB_DIR="lib/$${GOOS}_$${GOARCH}"; \
 	echo "Target directory: $$LIB_DIR"; \
 	mkdir -p $$LIB_DIR; \
-	if [ "$$OS" = "Windows_NT" ] || [[ "$$OS" == *"mingw"* ]] || [[ "$$OS" == *"msys"* ]]; then \
-		echo "Detected Windows - building for x86_64-pc-windows-gnu target"; \
-		cd zerobus-ffi && cargo build --release --target x86_64-pc-windows-gnu; \
-		cd ..; \
-		if [ -f zerobus-ffi/target/x86_64-pc-windows-gnu/release/libzerobus_ffi.a ]; then \
-			cp zerobus-ffi/target/x86_64-pc-windows-gnu/release/libzerobus_ffi.a $$LIB_DIR/; \
-		elif [ -f zerobus-ffi/target/release/zerobus_ffi.lib ]; then \
-			cp zerobus-ffi/target/release/zerobus_ffi.lib $$LIB_DIR/libzerobus_ffi.a; \
-		fi; \
-	else \
-		cd zerobus-ffi && cargo build --release; \
-		cd ..; \
-		cp zerobus-ffi/target/release/libzerobus_ffi.a $$LIB_DIR/; \
-	fi; \
+	cd zerobus-ffi && cargo build --release; \
+	cd ..; \
+	cp zerobus-ffi/target/release/libzerobus_ffi.a $$LIB_DIR/; \
 	cp zerobus-ffi/zerobus.h .
 	@echo "✓ Rust FFI layer built successfully"
 
