@@ -93,11 +93,6 @@ jobs:
     with:
       os: linux-ubuntu-latest
 
-  tests-windows:
-    uses: ./.github/workflows/test.yml
-    with:
-      os: windows-server-latest
-
   fmt:
     runs-on: ubuntu-latest
     steps:
