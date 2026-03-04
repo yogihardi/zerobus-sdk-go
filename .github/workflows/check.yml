@@ -9,9 +9,7 @@ on:
 jobs:
   check-rust-ffi:
     name: Check Rust Build (${{ matrix.target }})
-    runs-on:
-      group: databricks-protected-runner-group
-      labels: ${{ matrix.os-label }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -98,9 +96,7 @@ jobs:
 
   check-go:
     name: Check Go SDK
-    runs-on:
-      group: databricks-protected-runner-group
-      labels: linux-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 

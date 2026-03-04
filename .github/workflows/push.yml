@@ -9,9 +9,7 @@ on:
 jobs:
   test-user-experience-linux:
     name: Test go generate on Linux
-    runs-on:
-      group: databricks-protected-runner-group
-      labels: linux-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -47,9 +45,7 @@ jobs:
 
   test-user-experience-windows:
     name: Test go generate on Windows
-    runs-on:
-      group: databricks-protected-runner-group
-      labels: windows-server-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -103,9 +99,7 @@ jobs:
       os: windows-server-latest
 
   fmt:
-    runs-on:
-      group: databricks-protected-runner-group
-      labels: linux-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -120,9 +114,7 @@ jobs:
         run: git diff --exit-code
 
   lint:
-    runs-on:
-      group: databricks-protected-runner-group
-      labels: linux-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5

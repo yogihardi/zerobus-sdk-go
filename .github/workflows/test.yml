@@ -11,9 +11,7 @@ jobs:
   test:
     strategy:
         fail-fast: false
-    runs-on:
-      group: databricks-protected-runner-group
-      labels: ${{ inputs.os }}
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
